@@ -9,7 +9,7 @@ function checkForShip(player, coordinates){
     })[0];
 
     if (shipPresent) {
-      return true;
+      return ship;
     }
   }
   return false;
@@ -17,8 +17,18 @@ function checkForShip(player, coordinates){
 
 function damageShip (ship, coordinates) {
   ship.damage.push(coordinates);
-  
+}
+
+function fireAtLocation (opposingPlayer, guessedCoordinates) {
+  var ship = checkForShip(opposingPlayer, guessedCoordinates);
+  if (ship) {
+    damageShip(ship, guessedCoordinates);
+    // return true;
+  } else {
+    return false;
+  }
 }
 
 module.exports.checkForShip = checkForShip;
 module.exports.damageShip = damageShip;
+module.exports.fireAtLocation = fireAtLocation;
