@@ -105,6 +105,7 @@ describe('PLAYER METHODS', function () {
       };
 
       expect(handler).to.throw(Error);
+      expect(handler).to.throw('Direction was not provided and is required to place ship');
     });
   });
 });
