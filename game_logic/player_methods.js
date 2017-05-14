@@ -21,6 +21,8 @@ function validateLocations (player, locations) {
 }
 
 function placeShip (player, ship, startingCoordinates, direction) {
+  if (!direction) throw Error('Direction was not provided and is required to place ship');
+
   var proposedLocations = [];
   var previousLocation,
     rowNumber,
@@ -30,14 +32,14 @@ function placeShip (player, ship, startingCoordinates, direction) {
     previousLocation = proposedLocations[i - 1] || [];
     rowNumber = previousLocation[0];
     columnNumber = previousLocation[1];
-    
+
     proposedLocations[i] = (i === 0)
       ? startingCoordinates
       : (direction === 'horizontal')
         ? [rowNumber, ++columnNumber]
         : [++rowNumber, columnNumber];
   }
-  
+
   if (validateLocations(player, proposedLocations)) {
     ship.locations = proposedLocations;
   } else {
