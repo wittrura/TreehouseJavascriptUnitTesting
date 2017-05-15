@@ -47,30 +47,24 @@ function placeShip (player, ship, startingCoordinates, direction) {
   }
 }
 
-function computerFire (player) {
-    var x = Math.floor(Math.random() * 9);
-    var y = Math.floor(Math.random() * 9);
-    var coordinates = [x, y];
-
-    fire(player, coordinates);
-}
-
-function computerPlaceShip (player, ship) {
-  var direction = Math.random() > 0.5
-    ? 'horizontal'
-    : 'vertical';
-
+function getRandomCoordinates () {
   var x = Math.floor(Math.random() * 9);
   var y = Math.floor(Math.random() * 9);
-  var coordinates = [x, y];
-
-  placeShip(player, ship, coordinates, direction);
+  return [x, y];
 }
+
+function getRandomDirection () {
+  return Math.random() > 0.5
+    ? 'horizontal'
+    : 'vertical';
+}
+
+// fire(player, getRandomCoordinates());
+// placeShip(computerPlayer, computerPlayer.ship[0], getRandomCoordinates(), getRandomDirection());
+
 
 module.exports = {
   placeShip: placeShip,
   validateLocations: validateLocations,
-  validateLocation: validateLocation,
-  computerFire: computerFire,
-  computerPlaceShip: computerPlaceShip
+  validateLocation: validateLocation
 };
