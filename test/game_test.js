@@ -39,7 +39,7 @@ describe('GAME INSTANCE FUNCTIONS', function(){
       }
     });
 
-    it('should return false if the game ends', function(done) {
+    it('should return false if the game ends', function() {
       var actual = takeTurn(player, guess);
 
       expect(actual).to.be.false;
