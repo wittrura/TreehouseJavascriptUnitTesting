@@ -60,8 +60,10 @@ describe('GAME INSTANCE FUNCTIONS', function(){
 
       saveGame(function () {
           status = 'game saved!';
-          expect(status).to.equal('game saved!');
+
           done();
+
+          expect(status).to.equal('game saved!');
       });
 
     });
